@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Akshay Kumar — Video Editor Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+  :root{
+    --bg:#1b2336;               /* lighter navy background */
+    --card:#222c45;
+    --muted:#cbd5e1;
+    --accent:#7c3aed;
+    --accent-2:#06b6d4;
+    --glass: rgba(255,255,255,0.05);
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,#24304b 0%,#1b2336 70%);
+    color:#f1f5fb;
+    line-height:1.5;
+  }
+  a{color:inherit;text-decoration:none}
+
+  .container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+  header{
+    position:sticky;top:0;z-index:40;
+    backdrop-filter:blur(8px);
+    background:rgba(27,35,54,0.9);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+  .logo{display:flex;align-items:center;gap:12px;font-weight:700}
+  .logo .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(45deg,var(--accent),var(--accent-2));box-shadow:0 4px 12px rgba(124,58,237,0.3)}
+
+  nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0}
+  nav a.navlink{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600;font-size:14px;transition:all .18s}
+  nav a.navlink:hover{color:#fff}
+  nav a.navlink.active{color:#fff;background:linear-gradient(90deg,rgba(124,58,237,0.18),rgba(6,182,212,0.08))}
+
+  .hero{display:grid;grid-template-columns:1fr 380px;gap:36px;align-items:center;padding:60px 0}
+  @media(max-width:880px){.hero{grid-template-columns:1fr}}
+  .hero-left h1{font-size:clamp(28px,4.2vw,44px);font-weight:800;margin:0 0 8px;}
+  .subtitle{color:var(--muted);margin-bottom:12px}
+  .type-row{display:flex;gap:10px;align-items:center}
+  .type-dot{width:10px;height:10px;border-radius:6px;background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 0 16px rgba(124,58,237,0.6)}
+  .type-text{font-weight:600;color:#f8fafc}
+  .hero-cta{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,0.08);background:linear-gradient(90deg,rgba(124,58,237,0.2),rgba(6,182,212,0.1));color:#fff;cursor:pointer;transition:transform .14s,box-shadow .12s}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(6,182,212,0.15)}
+  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.12);color:var(--muted)}
+  .meta{margin-top:10px;color:var(--muted);font-size:14px}
+
+  .card-hero{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 10px 20px rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06)}
+  .card-hero h4{margin:0 0 6px;font-size:15px}
+  .card-hero p{color:var(--muted);margin:0 0 10px;font-size:13px}
+  .mini{display:flex;gap:10px;flex-wrap:wrap}
+  .mini .chip{background:var(--glass);padding:8px 10px;border-radius:10px;font-weight:600;color:var(--muted);font-size:13px}
+
+  section{padding:60px 0}
+  h2.section-title{font-size:20px;margin:0 0 18px;color:#fff;display:flex;align-items:center;gap:10px}
+  .muted{color:var(--muted)}
+
+  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media(max-width:740px){.skills-grid{grid-template-columns:1fr}}
+  .skill{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.08)}
+  .skill h5{margin:0 0 6px;font-size:13px}
+  .bar{height:10px;background:rgba(255,255,255,0.1);border-radius:999px;overflow:hidden}
+  .bar > i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%;transition:width 900ms ease}
+
+  .exp-card{display:flex;gap:16px;align-items:flex-start;background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.08)}
+  .exp-left{min-width:110px;font-weight:700;color:var(--muted);font-size:13px}
+  .exp-right h4{margin:0 0 6px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .chip{background:rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;font-weight:600;color:var(--muted);font-size:13px}
+
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .proj{border-radius:12px;padding:14px;background:var(--card);border:1px solid rgba(255,255,255,0.08);transition:transform .18s,box-shadow .18s;cursor:pointer}
+  .proj:hover{transform:translateY(-6px);box-shadow:0 8px 20px rgba(0,0,0,0.3)}
+  .proj h4{margin:0 0 6px}
+  .proj p{color:var(--muted);margin:0;font-size:13px}
+
+  footer{padding:24px 0;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,0.08)}
+
+  /* Entrance animation */
+  section{opacity:0;transform:translateY(20px);transition:opacity .8s ease, transform .8s ease}
+  section.visible{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="dot"></div>
+        <div>
+          <div>Akshay Kumar</div>
+          <div style="font-size:12px;color:var(--muted);font-weight:600">Video Editor</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a class="navlink active" href="#about">About</a></li>
+          <li><a class="navlink" href="#skills">Skills</a></li>
+          <li><a class="navlink" href="#experience">Experience</a></li>
+          <li><a class="navlink" href="#projects">Projects</a></li>
+          <li><a class="navlink" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="top">
+
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Hello — I’m <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;color:transparent">Akshay Kumar</span></h1>
+        <p class="subtitle">I turn raw footage into cinematic stories for brands, films and creators.</p>
+        <div class="type-row"><div class="type-dot"></div><div class="type-text" id="typeText">Editing · Color Grading · Motion Design</div></div>
+        <div class="hero-cta">
+          <a class="btn" href="https://drive.google.com/drive/folders/1vlBU_lzZOPOYs-HupudfLUDxVFFm2h4X?usp=drive_link" target="_blank">🎥 Watch Showreel</a>
+          <a class="btn ghost" href="mailto:kakshay9284@gmail.com">✉️ Contact</a>
+        </div>
+        <div class="meta">Available for freelance & full-time roles · Based in Chandigarh, India</div>
+      </div>
+
+      <aside class="card-hero">
+        <h4>Quick Info</h4>
+        <p>Video Editor with MAAC training and experience at Two Hazy Circle. I focus on cinematic storytelling and clean workflow.</p>
+        <div class="mini">
+          <div class="chip">Premiere Pro</div>
+          <div class="chip">After Effects</div>
+          <div class="chip">Photoshop</div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About <span class="muted">Me</span></h2>
+      <p class="muted">I'm Akshay — a Video Editor passionate about rhythm, pacing, and visual emotion. I craft engaging edits for promos, films, and reels, ensuring clarity, creativity, and smooth delivery.</p>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Key <span class="muted">Skills</span></h2>
+      <div class="skills-grid" style="margin-top:12px">
+        <div class="skill" data-value="92">
+          <h5>Adobe Premiere Pro <span style="float:right;color:var(--muted)">92%</span></h5>
+          <div class="bar"><i></i></div>
+        </div>
+        <div class="skill" data-value="84">
+          <h5>Adobe After Effects <span style="float:right;color:var(--muted)">84%</span></h5>
+          <div class="bar"><i></i></div>
+        </div>
+        <div class="skill" data-value="88">
+          <h5>Adobe Photoshop <span style="float:right;color:var(--muted)">88%</span></h5>
+          <div class="bar"><i></i></div>
+        </div>
+        <div class="skill" data-value="80">
+          <h5>Color Correction & Grading <span style="float:right;color:var(--muted)">80%</span></h5>
+          <div class="bar"><i></i></div>
+        </div>
+        <div class="skill" data-value="86">
+          <h5>Social Media Reels & Short-form <span style="float:right;color:var(--muted)">86%</span></h5>
+          <div class="bar"><i></i></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="exp-card">
+        <div class="exp-left">Jan 2024 → Present</div>
+        <div class="exp-right">
+          <h4>Video Editor — Two Hazy Circle</h4>
+          <div class="muted">Chandigarh</div>
+          <p class="muted" style="margin-top:8px">Edited promotional videos, short films, and social content from raw to final delivery. Managed sync, motion text, and revisions efficiently.</p>
+          <div class="chips"><div class="chip">Premiere Pro</div><div class="chip">Color Grading</div><div class="chip">Client Revisions</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <div class="proj"><h4>Brand Promo — Café Launch</h4><p>Motion text and fast cuts for social campaign.</p></div>
+        <div class="proj"><h4>Short Film — Lost in Thought</h4><p>Full edit and cinematic pacing with grading.</p></div>
+        <div class="proj"><h4>Travel Reels</h4><p>Dynamic reels matching beats and transitions.</p></div>
+        
+      </div>
+    </section>
+
+    <section id="contact" style="text-align:center">
+      <h2 class="section-title">Get <span class="muted">In Touch</span></h2>
+      <p class="muted">Reach out for collaboration or freelance projects.</p>
+      <a class="btn" href="mailto:kakshay9284@gmail.com">📧 Contact Me</a>
+    </section>
+
+    <footer>
+      📧 kakshay9284@gmail.com · 📞 +91 8091006170 · 📍 Chandigarh, India
+      <br>© <span id="year"></span> Akshay Kumar
+    </footer>
+  </main>
+
+  <script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Animate sections in view
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+    });
+  },{threshold:0.2});
+  document.querySelectorAll('section').forEach(s=>obs.observe(s));
+
+  // Animate skill bars
+  const skillObs=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelector('.bar>i').style.width=e.target.dataset.value+'%';
+        skillObs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.3});
+  document.querySelectorAll('.skill').forEach(s=>skillObs.observe(s));
+
+  // Type effect
+  (function typeLoop(){
+    const phrases=['Editing · Color Grading · Motion Design','Short Films · Promos · Reels','Fast Turnarounds · Clean Revisions'];
+    const el=document.getElementById('typeText');
+    let i=0,j=0,fw=true;
+    function tick(){
+      el.textContent=phrases[i].slice(0,j);
+      if(fw){if(j++>=phrases[i].length){fw=false;setTimeout(tick,1200);return;}}
+      else{if(j--<=0){fw=true;i=(i+1)%phrases.length;}}
+      setTimeout(tick,fw?80:40);
+    } tick();
+  })();
+  </script>
+</body>
+</html>
