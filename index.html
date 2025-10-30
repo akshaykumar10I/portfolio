@@ -10,239 +10,243 @@
 
   <style>
   :root{
-    --bg:#1b2336;               /* lighter navy background */
-    --card:#222c45;
-    --muted:#cbd5e1;
+    --bg:#e9eef7;
+    --card:#ffffff;
+    --text:#0b1220;
+    --muted:#475569;
     --accent:#7c3aed;
     --accent-2:#06b6d4;
-    --glass: rgba(255,255,255,0.05);
     --radius:14px;
   }
+
   *{box-sizing:border-box}
-  html,body{height:100%}
   body{
     margin:0;
-    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background: linear-gradient(180deg,#24304b 0%,#1b2336 70%);
-    color:#f1f5fb;
-    line-height:1.5;
+    font-family:'Inter',system-ui;
+    background:linear-gradient(180deg,#f4f7fb 0%,#e9eef7 100%);
+    color:var(--text);
+    line-height:1.6;
   }
-  a{color:inherit;text-decoration:none}
 
-  .container{max-width:1100px;margin:0 auto;padding:0 20px}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%}
 
   header{
-    position:sticky;top:0;z-index:40;
-    backdrop-filter:blur(8px);
-    background:rgba(27,35,54,0.9);
-    border-bottom:1px solid rgba(255,255,255,0.08);
+    position:sticky;top:0;z-index:50;
+    background:#fff;
+    border-bottom:1px solid #e2e8f0;
   }
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
-  .logo{display:flex;align-items:center;gap:12px;font-weight:700}
-  .logo .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(45deg,var(--accent),var(--accent-2));box-shadow:0 4px 12px rgba(124,58,237,0.3)}
 
-  nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0}
-  nav a.navlink{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600;font-size:14px;transition:all .18s}
-  nav a.navlink:hover{color:#fff}
-  nav a.navlink.active{color:#fff;background:linear-gradient(90deg,rgba(124,58,237,0.18),rgba(6,182,212,0.08))}
+  .container{max-width:1100px;margin:auto;padding:0 20px}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+  .logo .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+
+  nav ul{list-style:none;display:flex;gap:14px;margin:0;padding:0}
+  .navlink{font-weight:600;font-size:14px;color:var(--muted)}
+  .navlink:hover,.navlink.active{color:var(--accent)}
 
   .hero{display:grid;grid-template-columns:1fr 380px;gap:36px;align-items:center;padding:60px 0}
   @media(max-width:880px){.hero{grid-template-columns:1fr}}
-  .hero-left h1{font-size:clamp(28px,4.2vw,44px);font-weight:800;margin:0 0 8px;}
-  .subtitle{color:var(--muted);margin-bottom:12px}
-  .type-row{display:flex;gap:10px;align-items:center}
-  .type-dot{width:10px;height:10px;border-radius:6px;background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 0 16px rgba(124,58,237,0.6)}
-  .type-text{font-weight:600;color:#f8fafc}
-  .hero-cta{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,0.08);background:linear-gradient(90deg,rgba(124,58,237,0.2),rgba(6,182,212,0.1));color:#fff;cursor:pointer;transition:transform .14s,box-shadow .12s}
-  .btn:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(6,182,212,0.15)}
-  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.12);color:var(--muted)}
-  .meta{margin-top:10px;color:var(--muted);font-size:14px}
 
-  .card-hero{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 10px 20px rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06)}
-  .card-hero h4{margin:0 0 6px;font-size:15px}
-  .card-hero p{color:var(--muted);margin:0 0 10px;font-size:13px}
-  .mini{display:flex;gap:10px;flex-wrap:wrap}
-  .mini .chip{background:var(--glass);padding:8px 10px;border-radius:10px;font-weight:600;color:var(--muted);font-size:13px}
+  .hero h1{font-size:clamp(30px,4vw,44px);margin:0 0 10px;font-weight:800}
+  .subtitle{color:var(--muted);margin-bottom:12px}
+  .type-text{font-weight:600;color:var(--accent-2)}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    color:#fff;padding:10px 14px;border-radius:10px;border:none;
+    font-weight:700;font-size:14px;cursor:pointer;
+    transition:all .2s;
+  }
+  .btn:hover{opacity:.9;transform:translateY(-2px)}
+  .btn.ghost{
+    background:#f1f5f9;color:var(--text);border:1px solid #e2e8f0;
+  }
 
   section{padding:60px 0}
-  h2.section-title{font-size:20px;margin:0 0 18px;color:#fff;display:flex;align-items:center;gap:10px}
+  h2.section-title{font-size:22px;margin-bottom:14px;color:var(--accent)}
   .muted{color:var(--muted)}
 
-  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  @media(max-width:740px){.skills-grid{grid-template-columns:1fr}}
-  .skill{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.08)}
-  .skill h5{margin:0 0 6px;font-size:13px}
-  .bar{height:10px;background:rgba(255,255,255,0.1);border-radius:999px;overflow:hidden}
-  .bar > i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%;transition:width 900ms ease}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .skill{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+  .bar{height:8px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin-top:6px}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%;transition:width 1s}
 
-  .exp-card{display:flex;gap:16px;align-items:flex-start;background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.08)}
-  .exp-left{min-width:110px;font-weight:700;color:var(--muted);font-size:13px}
+  .exp-card{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.05);margin-bottom:14px}
+  .exp-left{font-weight:600;color:var(--muted)}
   .exp-right h4{margin:0 0 6px}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-  .chip{background:rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;font-weight:600;color:var(--muted);font-size:13px}
 
-  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-  .proj{border-radius:12px;padding:14px;background:var(--card);border:1px solid rgba(255,255,255,0.08);transition:transform .18s,box-shadow .18s;cursor:pointer}
-  .proj:hover{transform:translateY(-6px);box-shadow:0 8px 20px rgba(0,0,0,0.3)}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .proj{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.08);cursor:pointer;transition:transform .2s}
+  .proj:hover{transform:translateY(-4px)}
   .proj h4{margin:0 0 6px}
-  .proj p{color:var(--muted);margin:0;font-size:13px}
 
-  footer{padding:24px 0;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,0.08)}
+  footer{text-align:center;padding:24px 0;color:var(--muted);border-top:1px solid #e2e8f0}
 
-  /* Entrance animation */
-  section{opacity:0;transform:translateY(20px);transition:opacity .8s ease, transform .8s ease}
-  section.visible{opacity:1;transform:none}
+  /* Modal */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.open{display:flex}
+  .panel{background:#fff;padding:18px;border-radius:10px;max-width:800px;width:100%}
+  .close{float:right;border:none;background:none;font-size:20px;cursor:pointer;color:var(--muted)}
+  iframe{width:100%;height:400px;border:none;border-radius:8px;background:#000}
   </style>
 </head>
 <body>
+<header>
+  <div class="container nav">
+    <div class="logo"><div class="dot"></div> Akshay Kumar</div>
+    <nav>
+      <ul>
+        <li><a href="#about" class="navlink active">About</a></li>
+        <li><a href="#skills" class="navlink">Skills</a></li>
+        <li><a href="#experience" class="navlink">Experience</a></li>
+        <li><a href="#projects" class="navlink">Projects</a></li>
+        <li><a href="#contact" class="navlink">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-  <header>
-    <div class="container nav">
-      <div class="logo">
-        <div class="dot"></div>
-        <div>
-          <div>Akshay Kumar</div>
-          <div style="font-size:12px;color:var(--muted);font-weight:600">Video Editor</div>
-        </div>
+<main class="container">
+  <section class="hero">
+    <div>
+      <h1>Hello — I’m <span style="color:var(--accent)">Akshay Kumar</span></h1>
+      <p class="subtitle">I turn raw footage into cinematic stories for brands, films, and creators.</p>
+      <p class="type-text" id="typeText">Editing · Color Grading · Motion Design</p>
+
+      <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="https://drive.google.com/drive/folders/1vlBU_lzZOPOYs-HupudfLUDxVFFm2h4X?usp=drive_link" target="_blank">🎥 Watch Showreel</a>
+        <button class="btn ghost" id="downloadResume">⬇️ Download Resume</button>
+        <a class="btn ghost" href="mailto:kakshay9284@gmail.com">✉️ Contact</a>
       </div>
-      <nav>
-        <ul>
-          <li><a class="navlink active" href="#about">About</a></li>
-          <li><a class="navlink" href="#skills">Skills</a></li>
-          <li><a class="navlink" href="#experience">Experience</a></li>
-          <li><a class="navlink" href="#projects">Projects</a></li>
-          <li><a class="navlink" href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+      <p class="muted" style="margin-top:10px">Available for freelance & full-time roles · Based in Chandigarh, India</p>
     </div>
-  </header>
 
-  <main class="container" id="top">
+    <div class="exp-card">
+      <h4>Quick Info</h4>
+      <p>Video Editor with MAAC training and hands-on studio experience at Two Hazy Circle. I focus on efficient workflows and fast turnarounds without sacrificing cinematic quality.</p>
+    </div>
+  </section>
 
-    <section class="hero">
-      <div class="hero-left">
-        <h1>Hello — I’m <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;color:transparent">Akshay Kumar</span></h1>
-        <p class="subtitle">I turn raw footage into cinematic stories for brands, films and creators.</p>
-        <div class="type-row"><div class="type-dot"></div><div class="type-text" id="typeText">Editing · Color Grading · Motion Design</div></div>
-        <div class="hero-cta">
-          <a class="btn" href="https://drive.google.com/drive/folders/1vlBU_lzZOPOYs-HupudfLUDxVFFm2h4X?usp=drive_link" target="_blank">🎥 Watch Showreel</a>
-          <a class="btn ghost" href="mailto:kakshay9284@gmail.com">✉️ Contact</a>
-        </div>
-        <div class="meta">Available for freelance & full-time roles · Based in Chandigarh, India</div>
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <p class="muted">
+      I'm Akshay — a Video Editor with a background in compositing and a passion for pacing, emotion, and rhythm.
+      I’ve worked on short films, promotional content, and social media videos with attention to detail and storytelling.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill" data-value="92">
+        <h5>Adobe Premiere Pro</h5>
+        <div class="bar"><i></i></div>
       </div>
-
-      <aside class="card-hero">
-        <h4>Quick Info</h4>
-        <p>Video Editor with MAAC training and experience at Two Hazy Circle. I focus on cinematic storytelling and clean workflow.</p>
-        <div class="mini">
-          <div class="chip">Premiere Pro</div>
-          <div class="chip">After Effects</div>
-          <div class="chip">Photoshop</div>
-        </div>
-      </aside>
-    </section>
-
-    <section id="about">
-      <h2 class="section-title">About <span class="muted">Me</span></h2>
-      <p class="muted">I'm Akshay — a Video Editor passionate about rhythm, pacing, and visual emotion. I craft engaging edits for promos, films, and reels, ensuring clarity, creativity, and smooth delivery.</p>
-    </section>
-
-    <section id="skills">
-      <h2 class="section-title">Key <span class="muted">Skills</span></h2>
-      <div class="skills-grid" style="margin-top:12px">
-        <div class="skill" data-value="92">
-          <h5>Adobe Premiere Pro <span style="float:right;color:var(--muted)">92%</span></h5>
-          <div class="bar"><i></i></div>
-        </div>
-        <div class="skill" data-value="84">
-          <h5>Adobe After Effects <span style="float:right;color:var(--muted)">84%</span></h5>
-          <div class="bar"><i></i></div>
-        </div>
-        <div class="skill" data-value="88">
-          <h5>Adobe Photoshop <span style="float:right;color:var(--muted)">88%</span></h5>
-          <div class="bar"><i></i></div>
-        </div>
-        <div class="skill" data-value="80">
-          <h5>Color Correction & Grading <span style="float:right;color:var(--muted)">80%</span></h5>
-          <div class="bar"><i></i></div>
-        </div>
-        <div class="skill" data-value="86">
-          <h5>Social Media Reels & Short-form <span style="float:right;color:var(--muted)">86%</span></h5>
-          <div class="bar"><i></i></div>
-        </div>
+      <div class="skill" data-value="85">
+        <h5>Adobe Photoshop</h5>
+        <div class="bar"><i></i></div>
       </div>
-    </section>
-
-    <section id="experience">
-      <h2 class="section-title">Experience</h2>
-      <div class="exp-card">
-        <div class="exp-left">Jan 2024 → Present</div>
-        <div class="exp-right">
-          <h4>Video Editor — Two Hazy Circle</h4>
-          <div class="muted">Chandigarh</div>
-          <p class="muted" style="margin-top:8px">Edited promotional videos, short films, and social content from raw to final delivery. Managed sync, motion text, and revisions efficiently.</p>
-          <div class="chips"><div class="chip">Premiere Pro</div><div class="chip">Color Grading</div><div class="chip">Client Revisions</div></div>
-        </div>
+      <div class="skill" data-value="78">
+        <h5>Color Correction & Grading</h5>
+        <div class="bar"><i></i></div>
       </div>
-    </section>
-
-    <section id="projects">
-      <h2 class="section-title">Projects</h2>
-      <div class="projects-grid">
-        <div class="proj"><h4>Brand Promo — Café Launch</h4><p>Motion text and fast cuts for social campaign.</p></div>
-        <div class="proj"><h4>Short Film — Lost in Thought</h4><p>Full edit and cinematic pacing with grading.</p></div>
-        <div class="proj"><h4>Travel Reels</h4><p>Dynamic reels matching beats and transitions.</p></div>
-        
+      <div class="skill" data-value="70">
+        <h5>Motion Graphics (After Effects)</h5>
+        <div class="bar"><i></i></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="contact" style="text-align:center">
-      <h2 class="section-title">Get <span class="muted">In Touch</span></h2>
-      <p class="muted">Reach out for collaboration or freelance projects.</p>
-      <a class="btn" href="mailto:kakshay9284@gmail.com">📧 Contact Me</a>
-    </section>
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="exp-card">
+      <div class="exp-left">Jan 2024 → Present</div>
+      <div class="exp-right">
+        <h4>Video Editor — Two Hazy Circle</h4>
+        <p class="muted">Edited promotional videos, short films, and social content — from assembly to final color grade and export.</p>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-      📧 kakshay9284@gmail.com · 📞 +91 8091006170 · 📍 Chandigarh, India
-      <br>© <span id="year"></span> Akshay Kumar
-    </footer>
-  </main>
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+      <article class="proj" data-src="https://drive.google.com/drive/folders/1vlBU_lzZOPOYs-HupudfLUDxVFFm2h4X">
+        <h4>Brand Promo — Local Café</h4>
+        <p class="muted">Promo highlighting brand identity, motion text, and product shots.</p>
+      </article>
 
-  <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+      <article class="proj" data-src="https://drive.google.com/drive/folders/1vlBU_lzZOPOYs-HupudfLUDxVFFm2h4X">
+        <h4>Short Film — Lost in Thought</h4>
+        <p class="muted">Full edit, grade, and credits design for a student short.</p>
+      </article>
 
-  // Animate sections in view
-  const obs = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
-    });
-  },{threshold:0.2});
-  document.querySelectorAll('section').forEach(s=>obs.observe(s));
+      <article class="proj" data-src="https://drive.google.com/drive/folders/1vlBU_lzZOPOYs-HupudfLUDxVFFm2h4X">
+        <h4>Travel & Lifestyle Reels</h4>
+        <p class="muted">Vertical edits optimized for engagement and watch time.</p>
+      </article>
+    </div>
+  </section>
 
-  // Animate skill bars
-  const skillObs=new IntersectionObserver(es=>{
-    es.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.querySelector('.bar>i').style.width=e.target.dataset.value+'%';
-        skillObs.unobserve(e.target);
-      }
-    });
-  },{threshold:0.3});
-  document.querySelectorAll('.skill').forEach(s=>skillObs.observe(s));
+  <section id="contact" style="text-align:center">
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="muted">Prefer email? Use the button below — or send a message via the form.</p>
+    <div style="margin-top:20px">
+      <a class="btn" href="mailto:kakshay9284@gmail.com">✉️ Send Email</a>
+    </div>
+  </section>
+</main>
 
-  // Type effect
-  (function typeLoop(){
-    const phrases=['Editing · Color Grading · Motion Design','Short Films · Promos · Reels','Fast Turnarounds · Clean Revisions'];
-    const el=document.getElementById('typeText');
-    let i=0,j=0,fw=true;
-    function tick(){
-      el.textContent=phrases[i].slice(0,j);
-      if(fw){if(j++>=phrases[i].length){fw=false;setTimeout(tick,1200);return;}}
-      else{if(j--<=0){fw=true;i=(i+1)%phrases.length;}}
-      setTimeout(tick,fw?80:40);
-    } tick();
-  })();
-  </script>
+<footer>
+  📧 kakshay9284@gmail.com · 📞 +91 8091006170 · 📍 Chandigarh, India
+  <div style="margin-top:8px">© <span id="year"></span> Akshay Kumar</div>
+</footer>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="panel">
+    <button class="close" id="closeModal">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const $ = sel => document.querySelector(sel);
+const $$ = sel => [...document.querySelectorAll(sel)];
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Animate skills
+const skillEls = $$('.skill');
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelector('.bar i').style.width = e.target.dataset.value + '%';
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+skillEls.forEach(s=>obs.observe(s));
+
+// Resume download link
+$('#downloadResume').addEventListener('click',()=>{
+  const resumeLink='https://drive.google.com/file/d/1ZSbcYErUL9J_fo6kkYGOCC9pe8UDtyfb/view?usp=drive_link';
+  window.open(resumeLink,'_blank');
+});
+
+// Project modal
+const modal=$('#modal'),modalBody=$('#modalBody'),closeModal=$('#closeModal');
+$$('.proj').forEach(p=>{
+  p.addEventListener('click',()=>{
+    const src=p.dataset.src;
+    modal.classList.add('open');
+    modalBody.innerHTML=`<p style="color:#555">Open project in new tab:</p><a href="${src}" target="_blank" class="btn">View Project</a>`;
+  });
+});
+closeModal.addEventListener('click',()=>modal.classList.remove('open'));
+window.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});
+</script>
 </body>
 </html>
